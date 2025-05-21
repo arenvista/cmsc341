@@ -1,0 +1,17 @@
+the following is a sample usage of the Section class:
+            Test1    Test2    Test3    Test4    Test5    Test6    Test7    Test8
+ Student1    29.87    49.45     44.3    83.19    58.33     2.51    70.92    26.55 
+ Student2    26.36    15.03    68.38    81.66     33.6    89.08    19.81     3.06 
+ Student3    87.76    72.74    54.08    13.14    41.36    77.87    58.39    18.26 
+ Student4     82.6    10.54    28.35     6.55     5.64    76.54     1.17    61.19 
+ Student5    33.18    55.96    33.54    41.11     7.68     85.3    43.99    12.19 
+ Student6    73.17    13.87    76.68    83.19    30.97    59.75    87.23     98.3 
+ Student7    46.74    87.57     29.6    13.12    84.28     65.9    59.54    43.63 
+ Student8    35.62    58.71    14.94    17.12    39.71    63.79    37.25     0.24 
+
+the following is a sample usage of the Course class:
+Section 4000 does not exist!
+
+Testing studentAverage(...) for an error case:
+
+        Error case (student index does not exist) of studentAverage() passed!

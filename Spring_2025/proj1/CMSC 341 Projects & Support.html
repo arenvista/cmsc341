@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>CMSC 341 Projects &amp; Support</title>
+    <link rel="stylesheet" href="CMSC%20341%20Projects%20&amp;%20Support_files/bootstrap.min.css">
+    <link rel="stylesheet" href="CMSC%20341%20Projects%20&amp;%20Support_files/jquery-ui.css">
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/jquery.min.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/jquery-ui.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/popper.min.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/bootstrap.min.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/jumbotron/">
+    <link href="CMSC%20341%20Projects%20&amp;%20Support_files/styles.css" rel="stylesheet">
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/functions.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="https://www.umbc.edu/"><img src="CMSC%20341%20Projects%20&amp;%20Support_files/UMBCretrievers_LOGO.jpg" width="40" hight="40"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/projects/index.html">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/staff.html">TA Support</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/res/resources.html">Resources</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/res/faq.html">FAQ</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<main role="main">
+  <div class="" style="background-color: gainsboro;">
+    <div class="container" style="padding-top: 1.5em;padding-bottom: 0.5em;">
+      <h2 class=""><img class="proj-logo" src="CMSC%20341%20Projects%20&amp;%20Support_files/elev-button-up.png">&nbsp;Project 1: Elevator Controller - Spring 2025</h2>
+    </div>
+  </div> 
+
+  <div class="container">
+    <p style="height: 0.5em;"></p>
+    <div id="content">
+      <h2>Due: Tuesday Mar 4, before 9:00 pm</h2>
+      <div></div>
+
+      <h2 class="my-accordion">Objectives</h2>
+      <div>
+        <ul>
+          <li>Implementing a linked list data structure.</li>
+          <li>Using auxiliary data structures to implement the requirements.</li>
+          <li>Practice C++ dynamic memory management, i.e. avoiding 
+memory leaks, avoiding double free, protection against wrong accesses in
+ memory (segmentation fault), etc.</li>
+          <li>To practice writing unit tests.</li>
+          <li>To practice working in a Linux environment.</li>
+          <li>To practice analyzing and understanding a project requirements.</li>
+        </ul>
+      </div>
+      
+      <h2 class="my-accordion">Introduction</h2> 
+      <div>
+        <p>
+          An elevator controller must ensure safety, efficiency, and 
+reliability of the elevator while operating under different 
+circumstances. This controller is a system consisting of multiple 
+hardware and software components. The software component of the 
+controller provides many functions including the following:
+          </p><ul>
+            <li>It is an interface between the controller hardware components and the operators of the system.</li>
+            <li>It sets, resets, and monitors access to floors.</li>
+            <li>It sets, resets, and monitors the emergencies.</li>
+            <li>It schedules the travel based on predefined strategies while there are many travelers.</li>
+            <li>It collects data for maintenance purposes.</li>
+          </ul>
+        <p></p>
+        <p>The following state diagram represents elevator operations.</p>
+        <p><img class="center-large" src="CMSC%20341%20Projects%20&amp;%20Support_files/elevator-state-diagram.png"></p>
+      </div>
+
+      <h2 class="my-accordion">Assignment</h2>
+      <div>
+        <p>
+          Your assignment is to implement the core classes <tt>(CentCom and Elevator)</tt> of controller software which consist of multiple linked lists.
+        </p>
+        <p>
+          For this project, you are provided with the skeleton .h and .cpp files and a sample driver:
+        </p>
+        <p>
+          </p><ul>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj1files/centcom.h">centcom.h</a> - Interface for the CentCom, Elevator, and Floor classes.</li>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj1files/centcom.cpp">centcom.cpp</a> - will be completed and submitted.</li>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj1files/driver.cpp">driver.cpp</a> - a sample driver program. It contains 4 different scenarios.</li>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj1files/driver.txt">driver.txt</a> - sample output from driver.cpp. It shows the output of scenario 1 in driver.cpp.</li>
+          </ul>
+        <p></p>
+        <p>
+          Additionally, you are responsible for thoroughly testing your program. 
+          Your test program, <span class="monospace">mytest.cpp</span>, must be submitted along with other files. For grading purposes, your implementation will be tested on 
+          input data of varying sizes, including very large data. Your submission 
+          will also be checked for memory leaks and memory errors.
+        </p>
+      </div>
+      <h2 class="my-accordion">The Rules</h2>
+      <div>
+        <ul>
+          <li>When the elevator is idle the door is open.</li>
+          <li>When the elevator is moving in a direction it does not 
+change the direction until all floors in the original direction are 
+reached.</li>
+          <li>When the elevator is moving in a direction it stops at the requested floors in the order of floors not in the order of requests.</li>
+          <li>The elevator does not stop at a secured floor. A secured floor should not be added to the requests.</li>
+          <li>The elevator does not move if the emergency button is 
+pushed. This situation can only be cleared by an operator. After the 
+emergency is cleared the elevator continues to process the requests.
+            While the elevator is on hold and there are more requests 
+the current direction does not change. The elevator needs to continue 
+after the problem is resolved.
+          </li>
+          <li>If at a floor the elevator is overloaded it cannot move. 
+Once the load is reduced the elevator continues to process the requests.
+            While the elevator is on hold and there are more requests 
+the current direction does not change. The elevator needs to continue 
+after the problem is resolved. 
+          </li>
+        </ul>
+      </div>
+      <h2 class="my-accordion">Specifications</h2>
+      <div>
+        <p>There are three classes in this project.</p>
+        <h4>The Floor Class</h4>
+        <p>The Floor class is a node in the linked list and it stores 
+the information for a Floor. Every node has a pointer to the next node 
+in the linked list and a pointer to the previous node in the list. These
+ pointers are stored in the m_next and m_previous member variables. 
+There is no required implementation for the Floor class. The 
+implementation of this class is provided.</p>
+
+        <h4>The Elevator Class</h4>
+        <p>
+          The Elevator class stores the information for an elevator and 
+it implements a doubly linked list. You need to implement the class. The
+ class can be tested independently, however, in the application the 
+class can be used by the class CentCom. The Floor nodes are stored in 
+the linked list which is presented by the pointer to its first node and 
+its last node. The pointer to the first node is stored in the m_ground 
+member variable and the pointer to the last node is stored in the m_top 
+member variable. The member variable m_ground carries the lowest floor 
+number and the member variable m_top carries the highest floor number. 
+The floor numbers are to be in the ascending order, in other words the 
+linked list is sorted from smallest to largest number. The list does not
+ hold duplicate floor numbers. The floor numbers can be negative numbers
+ indicating the underground floors.
+        </p>
+        <p>The Elevator class holds two other doubly linked lists named 
+m_upRequests and m_downRequests. Each of these member variables stores a
+ list of travel requests in a specific direction.</p>
+        <p>
+          </p><div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">Elevator::Elevator(int ID)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The constructor creates an empty object and initializes all member variables to their respective default values.</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">Elevator::~Elevator()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The destructor deallocates all memory in the object and reinitializes all member variables.</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void Elevator::clear()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function deallocates all memory in the object and reinitializes all member variables.</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void Elevator::setUp(int firstFloor, int lastFloor)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function sets up the elevator to its required floors 
+if the current object is empty, otherwise it does not modify the object.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool Elevator::insertFloor(int floor)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function inserts floors at the head of the main 
+linked list.
+              If the floor is inserted the function returns true 
+otherwise it returns false.
+              This function is part of the class public interface. You 
+are allowed to use private helper functions to perform the job.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool Elevator::pushButton(int floor)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function registers (inserts) a Floor object in one of
+ the requests lists, i.e. m_upRequests or m_downRequests.
+              If the request is registered the function returns true, 
+otherwise it returns false.
+              For example, if the requested floor is a secure floor and 
+the elevator is not allowed to stop at that floor, there is no need to 
+register the request.
+              Possible scenarios for using this function are:
+              <ul>
+                <li>A passenger enters the elevator and pushes a specific floor button in order to travel to that floor.</li>
+                <li>A passenger waiting outside pushes the call buttons to stop the elevator and to enter. </li>
+              </ul>
+              
+              This function is part of the public interface. You are 
+allowed to create private helper functions to perform the functionality.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool Elevator::processNextRequest()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function processes the next registered request. For 
+example, if the elevator is in floor 2 and there has been a request 
+registered previously to go to floor 4, this function moves the elevator
+ from floor 2 to floor 4.
+              If the request is processed and completed, the function 
+returns true, otherwise it returns false.
+              As an example, if the elevator is overloaded at a floor, 
+it cannot move to the next requested floor until the problem is 
+resolved.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void Elevator::enter(int load)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function adds the new load specified by the parameter load to the current load of the elevator.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">int Elevator::exit(int load)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function reduces the elevator load by the amount of 
+the load parameter. The elevator load cannot be negative. 
+              The function returns the current load of the elevator. If 
+the load is negative the function returns zero.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void Elevator::pushEmergency(bool pushed)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function sets the emergency state in the elevator. A 
+sample scenario would be pushing the emergency button in the car by a 
+passenger.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool Elevator::checkSecure(int floor)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function returns the truth value of secure state for a floor. For the error cases the function returns false.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void Elevator::dump()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function prints out the state of the elevator.
+              <b>Note:</b> The implementation for this function is provided to you.
+              The purpose of this function is to facilitate debugging.
+            </div>
+          </div>
+          <p></p>
+          <h4>The CentCom Class</h4>
+        <p>
+          The CentCom class stores a list of elevators (objects of the 
+type Elevator) in a building. The member variable  m_elevatorsList is an
+ array that stores pointers to Elevator objects. The array will be 
+created dynamically once the application runs.
+        </p>
+        <p>
+          </p><div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">CentCom::CentCom(int numElevators,int buildingID)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The constructor creates the object. It initializes all 
+member variables. It creates memory if required.
+              The building ID is a unique ID and cannot be a negative 
+number.
+              The elevator IDs are used as array index numbers. For 
+example, the elevator 1 will be stored in the index number 1 in the 
+array.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">CentCom::~CentCom()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The destructor removes all memory and re-initializes all member variables to their default values.</div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool CentCom::addElevator(int ID, int bottomFloor, int topFloor)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function creates and stores an elevator in the current CentCom object.
+              If an elevator with ID exists, this function creates a new elevator and overwrites the current one.
+              If the elevator is created the function returns true, otherwise it returns false.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">Elevator* CentCom::getElevator(int ID)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function returns the Elevator object specified by ID 
+parameter, if the object does not exist the function returns nullptr. 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool CentCom::setSecure(int ID, int floorNum, bool yes_no)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function sets or re-sets the specific floor in the 
+specific elevator as a secure floor. If the function works correctly it 
+returns true.
+              For the error cases the function returns false.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool CentCom::clearEmergency(int ID)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function re-sets the emergency state of the specific 
+elevator. If the function works correctly it returns true.
+              For the error cases the function returns false.
+            </div>
+          </div>
+          <p></p>
+      </div>
+      
+      <h2 class="my-accordion">Additional Requirements</h2>
+      <div>
+        <ul>
+          <li>
+            The class declarations (<tt>CentCom</tt>,<tt>Elevator</tt> and <tt>Floor</tt>) and
+            provided function implementations
+            in <a href="https://swe.umbc.edu/~donyaee/current/projects/proj1files/centcom.cpp"><tt>centcom.cpp</tt></a> may not be
+            modified in any way.  You are not allowed to add a member variable. No additional libraries may be used.
+          </li>
+          <li>You are not allowed to use STL template containers in the project classes.</li>
+          <li>You are allowed to use STL template containers in your test functions.</li>
+          <li> The class functions must be written in <tt>centcom.cpp</tt>; in particular, they must
+            not be written “in-line.”
+          </li>
+          <li>
+            Private helper functions may be added, but must be declared in the
+            private section of the project class.  There is a comment
+            indicating where private helper function declarations should be
+            written.
+          </li>
+        </ul>
+      </div>
+      
+      <h2 class="my-accordion">Testing</h2>
+      <div>
+        <ul>
+          <li>The test file name must be <tt>mytest.cpp</tt>; the file name must be in lower case, a file name like <tt>myTest.cpp</tt> is not acceptable. </li>
+          <li>The test file must contain the declaration and implementation of your <tt>Tester</tt> class and the <tt>main()</tt> function as well as all your test cases, i.e. calls to your test functions.</li>
+          <li>You are responsible for adequately testing your work 
+before submission. The following section presents a non-exhaustive list 
+of tests to perform on your implementation.</li>
+          <li>You must write a separate function for every test case.</li>
+          <li>Every test function must return true/false depending on 
+passing or failing the test. Visual outputs are not accepted as test 
+results.</li>
+          <li>The dump() function should not be called in the test functions. The dump() function is only provided to facilitate debugging.</li>
+          <li>Tests cannot be interactive. The test file <tt>mytest.cpp</tt> must compile and run to completion. </li>
+          <li>An example of declaring, implementing, and calling a test function, and outputting the test results was provided in the <tt>driver.cpp</tt> file of project 0.</li>
+          <li>The <a href="https://swe.umbc.edu/~donyaee/res/testing.html">testing guidelines</a> page provides information that helps you to write more effective test cases.</li>
+        </ul>
+        <p><b>Note:</b> Testing incrementally makes finding bugs easier.
+ Once you finish a function and it is testable, make sure it is working 
+correctly.</p>
+        <h4>Testing CentCom and Elevator Class</h4>
+        <p>
+          </p><ul>
+            <li>Test CentCom constructor for a normal case.</li>
+            <li>Test CentCom constructor for an error case.</li>
+            <li>Test CentCom::addElevator() for a normal case.</li>
+            <li>Test CentCom::addElevator() for an error case.</li>
+            <li>Test Elevator::setUp() for an error case.</li>
+            <li>Test Elevator::insertFloor() for an error case.</li>
+            <li>Test Elevator::pushButton() for a normal scenario.</li>
+            <li>Test Elevator::pushButton() for an error scenario.</li>
+            <li>Test Elevator::processNextRequest() for a normal scenario.</li>
+            <li>Test Elevator::processNextRequest() for an error scenario.</li>
+          </ul>
+        <p></p>
+        <h4>Testing For Memory Leaks / Memory Errors</h4>
+        <p>
+          </p><ul>
+            <li>Run your test program in valgrind; check that there are no memory leaks or errors. 
+              <br><b>Note:</b> If valgrind finds memory errors, compile 
+your code with the -g option to enable debugging support and then re-run
+ valgrind with the -s and --track-origins=yes options. valgrind will 
+show you the line numbers where the errors are detected and can usually 
+tell you which line is causing the error.</li>
+              <li>Never ignore warnings. They are a major source of errors in a program.</li>
+          </ul>
+        <p></p>
+      </div>
+      
+      <h2 class="my-accordion">What to Submit</h2>
+      <div>
+        <p>
+          You must submit the following files to the <tt>proj1</tt> submit
+          directory:
+        </p>
+        <ul>
+          <li> <tt>centcom.h</tt> </li>
+          <li> <tt>centcom.cpp</tt> </li>
+          <li> <tt>mytest.cpp</tt> (<b>Note: </b> This file contains the declaration and implementation of your Tester class as well as all your test cases.)</li>
+        </ul>
+        <p>
+          If you followed the instructions in the
+          <a href="https://swe.umbc.edu/~donyaee/res/submission.html">Project Submission</a> page to set up
+          your directories, you can submit your code using the following
+          command:
+        </p>
+        <pre class="code">   cp centcom.h centcom.cpp mytest.cpp ~/cs341proj/proj1/</pre>
+      </div>   
+      
+      <h2 class="my-accordion">Grading Rubric</h2>
+      <div>
+        <p>
+          For details of grading rubric please refer to <a href="https://swe.umbc.edu/~donyaee/res/grading.html">Project Grading Policy</a>
+        </p>
+      </div>
+    </div>  
+  <hr>
+</div>
+</main>
+<footer class="container">
+  <div class="float-left">
+    <p>CMSC 341</p>
+  </div>
+  <div class="float-right">
+    <p>
+      <a href="http://www.csee.umbc.edu/">CSEE</a> |
+      <a href="http://www.umbc.edu/">UMBC</a>
+    </p>
+  </div>
+</footer>
+
+
+</body></html>

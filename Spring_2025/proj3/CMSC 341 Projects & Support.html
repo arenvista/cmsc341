@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>CMSC 341 Projects &amp; Support</title>
+    <link rel="stylesheet" href="CMSC%20341%20Projects%20&amp;%20Support_files/bootstrap.min.css">
+    <link rel="stylesheet" href="CMSC%20341%20Projects%20&amp;%20Support_files/jquery-ui.css">
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/jquery.min.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/jquery-ui.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/popper.min.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/bootstrap.min.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/jumbotron/">
+    <link href="CMSC%20341%20Projects%20&amp;%20Support_files/styles.css" rel="stylesheet">
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/functions.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="https://www.umbc.edu/"><img src="CMSC%20341%20Projects%20&amp;%20Support_files/UMBCretrievers_LOGO.jpg" width="40" hight="40" alt="UMBC Website"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/projects/index.html">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/staff.html">TA Support</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/res/resources.html">Resources</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/res/faq.html">FAQ</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<main role="main">
+  <div class="" style="background-color: gainsboro;">
+    <div class="container" style="padding-top: 1.5em;padding-bottom: 0.5em;">
+      <h2 class="">CMSC 341 - Project 3: Prioritizing Social Media Posts - Spring 2025</h2>
+    </div>
+  </div> 
+
+  <div class="container">
+    <p style="height: 0.5em;"></p>
+    <div id="content">
+      <h2>Due: Tuesday Apr 15 before 9:00 pm</h2>
+      <div></div>
+
+      <h2 class="my-accordion">Objectives</h2>
+      <div>
+        <ul>
+          <li>Practice constructing and using heap data structure as a priority queue ADT.</li>
+          <li>Practice writing merge operation in skew and leftist heap data structures.</li>
+          <li>Gain additional experience constructing and using binary trees.</li>
+          <li>Practice using recursion in programs.</li>
+          <li>Learn to use function pointers.</li>
+          <li>Practice writing unit tests.</li>
+          <li>Practice working in a Linux environment.</li>
+          <li>Practice analyzing and understanding a project requirements.</li>
+        </ul>
+      </div>
+      
+      <h2 class="my-accordion">Introduction</h2> 
+      <div>
+        <p>
+          There is a very large number of messages posted on social 
+media every day. The apps need to present the messages to the users in 
+an organized way. Different social media apps take different strategies 
+for presenting messages. A design team decided to test multiple 
+algorithms for prioritizing the messages to be presented to a user. Your
+ job is to implement a priority queue ADT for organizing the posts based
+ on multiple priority algorithms. The design provides multiple 
+implementations of a priority queue ADT such as different types of heap 
+data structure. The type of heap can change at any time.
+        </p><p>
+          The application automatically prioritizes the posts. The 
+prioritization is based on some specific criteria. The algorithm that 
+uses the criteria to calculate the priorities can change. Therefore, the
+ application should have the possibility of changing the post 
+priorities. An algorithm that can determine the priority will be 
+implemented in a function. Such an architecture allows us to use 
+different priority functions.
+        </p>
+      </div>
+
+      <h2 class="my-accordion">Heap</h2>
+      <div>
+        <h4>Skew Heap</h4>
+        <p>
+          A skew heap is a specialized version of a heap data structure which performs 
+          the insertion and deletion operations in O(log n) amortized time. This data 
+          structure is a binary tree in which the root always holds the node with the 
+          highest priority. Skew heap uses merge operation to perform insertion and 
+          deletion.
+        </p>
+        <p>
+          The major operations supported by a skew heap are insertion of
+ elements, reading the highest priority element, and removing the 
+highest priority element. Reading the highest priority element is just a
+ matter of reading the root node of the heap. The other two operations, 
+insertion and removal, are applications of the merge function:
+          </p><ul>
+            <li>To insert a new node x into an existing skew heap H, we treat x as a single-node skew heap and merge it with H.</li>
+            <li>To remove the node with highest priority value, we delete the root node and then merge the root's left and right sub-heaps.</li>
+          </ul>
+          We see, then, that the merge function is key to all of the 
+major skew heap operations. If we can implement merge correctly, 
+insertion and removal are simple.
+        <p></p>
+        <p>
+          The special feature of a skew heap is the merge operation 
+which combines two skew heaps into a single, valid skew heap. Let p1 and
+ p2 be positions in two skew heaps (e.g. pointers to nodes). The merge 
+operation is defined recursively:
+          </p><ul>
+            <li>If p1 is Null, return p2; similarly, if p2 is Null, return p1.</li>
+            <li>Assume that p1 has higher priority than p2; if not, swap, p1 and p2.</li>
+            <li>Swap the left and right subtrees of p1.</li>
+            <li>Recursively merge p2 and the left subtree of p1, replacing the left subtree of p1 with the result of the recursive merge.</li>
+          </ul>
+          The following figure shows two min-skew heaps and the result 
+of merging the two. In a min-heap a smaller priority number means a 
+higher priority node. 
+          <img class="center-large" src="CMSC%20341%20Projects%20&amp;%20Support_files/merge11.png">
+          <img class="center-large" src="CMSC%20341%20Projects%20&amp;%20Support_files/merge12.png">
+        <p></p>
+        <h4>Leftist Heap</h4>
+        <p>A leftist heap is similar to skew heap and it uses a merge 
+operation for insertion and deletion. However, it maintains a specific 
+property and it uses the property during the merge operations.
+          Every node in a leftist heap stores a value called Null Path 
+Length (NPL). This value presents the lowest number of edges from the 
+node to a null node. In the other word the NPL value represents the 
+shortest possible path from a node to a null node.
+        </p>
+        <p>During a merge operation if the NPL value of the right child 
+is larger than the NPL value of the left child we swap the children. 
+This generally makes the left subtree heavier than the right subtree.</p>
+      </div>
+
+      <h2 class="my-accordion">Assignment</h2>
+      <div>
+        <p>
+          In this project, you will implement a priority queue class 
+based on a skew-heap or a Leftist-heap data structure; it can maintain a
+ min-heap or a max-heap based on the computed priority for every node, 
+where the priority function is provided to the queue constructor via a 
+function pointer. Inserting to and extracting from the skew/leftist heap
+ uses a heap merge function which guarantees that the heap property 
+(min-heap or max-heap) is maintained; the comparisons that are part of 
+the merge process will be made on the computed priorities for the 
+objects in the heap. The queue class allows for the priority function to
+ be changed; in which case the heap must be rebuilt.
+          Moreover, the data structure can switch between a skew heap or
+ a leftist heap at the request of the class user. Such a request will 
+trigger reconstruction of the heap.
+        </p>
+        <p>
+          For this project, you are provided with the following files:
+          </p><ul>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj3files/squeue.h">squeue.h</a> – The interface for the Post, and SQueue classes.</li>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj3files/squeue.cpp">squeue.cpp</a> – A skeleton for the implementation of the queue class.</li>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj3files/driver.cpp">driver.cpp</a> – A sample driver program. It contains sample use of the queue class.</li>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj3files/driver.txt">driver.txt</a> – A sample output produced by driver.cpp</li>
+          </ul>
+        <p></p>
+      </div>
+      
+      <h2 class="my-accordion">Specifications</h2>
+      <div>
+        <p>There are two classes in this project. The class SQueue has a member variable of type Post.</p>
+        <h4>Class Post</h4>
+        <p>The implementation of this class is provided to you. You are 
+not allowed to modify the class. This class stores the following 
+information about a post:
+          </p><ul>
+            <li>m_postID stores a unique ID for every post.</li>
+            <li>m_likes stores the number likes for the post. </li>
+            <li>m_connectLevel stores a number presenting the distance 
+between the poster and the user who will see the post. The value 1 
+indicates that the poster and the viewer are directly connected. The 
+value 2 indicates that there is third person between the poster and the 
+viewer. There can be up to 5 connection levels.</li>
+            <li>m_postTime stores the time that a message was posted. 
+This variable can take a value between 1 and 50. It indicates the 
+placement of post. Using this value we can see what message was posted 
+earlier comparing to other messages. For example, the value 50 indicates
+ that the message was the last one posted. </li>
+            <li>m_interestLevel stores the level that a post may be in 
+the interest of the viewer. The value of 1 presents the least and the 
+value of 10 presents the most.</li>
+          </ul>
+        <p></p>
+        <h4>Priority Functions</h4>
+        <p>
+          A priority function is a user defined function that can use 
+the information in the class Post to determine a priority value for a 
+post. Two example functions are provided in the driver.cpp file. You can
+ define your own priority functions. In fact, different plants may have 
+different criteria for this purpose. The ability of using different 
+functions allows us to adapt to different priority algorithms. The heap 
+can accept a prioritization function. This is accomplished by passing a 
+function pointer to the constructor. The function pointer is the address
+ of a function that will be used to compute the priority for posts. The 
+function must take an Post object as input and must return an integer 
+priority value. A typedef for the function pointer is provided for you 
+in the header file:
+          </p><pre class="code">  typedef int (*prifn_t)(const Post&amp;);</pre>
+          This says that prifn_t is a pointer to a function that takes a Post&amp; argument.
+        <p></p>
+        <p>
+          </p><div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">int priorityFn1(const Post &amp; post);</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function determines a priority value for the argument
+ and returns the priority value.
+              The algorithm in this function uses the information in the
+ Post class. In this algorithm a greater value means a higher priority. 
+To use this function we need to build a max-heap.
+              If the function cannot calculate a valid priority value it
+ returns zero.
+              <br><b>Note:</b> The implementation of this function is provided to you. You do not need to modify it.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">int priorityFn2(const Post &amp; post);</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function returns the priority value for the argument 
+and returns the priority value.
+              The algorithm in this function uses the information in the
+ Post class. In this algorithm a smaller value means a higher priority. 
+To use this function we need to build a min-heap.
+              If the function cannot calculate a valid priority value it
+ returns zero.
+              <br><b>Note:</b> The implementation of this function is provided to you. You do not need to modify it.
+            </div>
+          </div>
+        <p></p>
+        <h4>Overloaded Insertion Function</h4>
+        <p>
+          There is an overloaded insertion function for the class Post 
+          to help you debugging the project. The implementation is provided to you. You do not need to modify the function.
+        </p>
+        <h4>Class SQueue</h4>
+        <p>
+          The class SQueue constructs a skew or a leftist data structure
+ of the type min-heap or max-heap. This class has a member variable 
+called m_heap. The member variable m_heap presents the root node of the 
+heap data structure and it is of the type Post. The following table 
+presents the list of member functions that need implementation.
+        </p>
+        <p>
+          </p><div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">SQueue(prifn_t priFn, HEAPTYPE heapType, STRUCTURE structure);</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This is the constructor. It must be provided with a 
+pointer to the prioritization function, the type of heap, and the 
+desired data structure.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">SQueue::~SQueue()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The destructor deallocates the memory and re-initializes the member variables.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">SQueue::SQueue(const SQueue&amp; rhs)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The copy constructor must make a deep copy of the rhs 
+object. It must function correctly if rhs is empty. This function 
+creates an exact same copy of rhs.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">SQueue&amp; SQueue::operator=(const SQueue&amp; rhs)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The assignment operator creates an exact same copy of rhs.
+ You should not call the copy constructor in the implementation of the 
+assignment operator.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool SQueue::insertPost(const Post&amp; input)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              Inserts a Post object into the queue. It must maintain the
+ min-heap or the max-heap property depending on the settings. Moreover, 
+if the selected data structure is leftist heap, it needs to maintain a 
+correct value of Null Path Length (NPL) in the node.
+              If the Post object does not provide a valid priority value
+ the object is not inserted and the function returns false, otherwise 
+the function returns true. 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">Post SQueue::getNextPost()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function extracts (removes the node) and returns the 
+highest priority post from the queue. It must maintain the min-heap or 
+max-heap property. The function throws an out_of_range exception if the 
+queue is empty when the function is called.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void SQueue::mergeWithQueue(SQueue&amp; rhs)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function merges the host queue with the rhs; it 
+leaves rhs empty; it transfers all nodes from rhs to the current heap. 
+Two heaps can 
+              only be merged if they have the same priority function and
+ they are of the same data structure. If the user 
+              attempts to merge queues with different priority 
+functions, or two different data structures a 
+              domain_error exception should be thrown.
+              This function requires protection against self-merging. 
+Merging a heap with itself is not allowed.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void SQueue::clear()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function clears the queue. It must delete all the 
+nodes in the heap, leaving the heap empty. Moreover, it re-initializes 
+the member variables.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">int SQueue::numPosts() const</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              It returns the current number of posts in the queue.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void SQueue::printPostQueue() const</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              It prints the contents of the queue using preorder 
+traversal. Although the first post printed should have the highest 
+priority, the remaining posts will not necessarily be in priority order.
+              Please refer to the sample output file (<a href="https://swe.umbc.edu/~donyaee/current/projects/proj3files/driver.txt">driver.txt</a>) for the format of this function's output.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">prifn_t SQueue::getPriorityFn() const</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function returns the current priority function.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void SQueue::setPriorityFn(prifn_t priFn, HEAPTYPE heapType)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function sets a new priority function and its 
+corresponding heap type (min-heap or max-heap). It must rebuild the 
+heap! To rebuild the heap this application does not re-allocate memory 
+to the objects; it reuses the current memory.
+              <br>Note: it is the responsibility of the user to pass 
+compatible arguments priFn and heapType. The class implementation does 
+not need to check the compatibility.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">HEAPTYPE SQueue::getHeapType() const</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function returns the heap type, i.e. it is either MINHEAP or MAXHEAP.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">STRUCTURE SQueue::getStructure() const</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function returns the structure of the current heap, i.e. it is either SKEW or LEFTIST.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void SQueue::setStructure(STRUCTURE structure)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function sets the data structure, i.e. it is either 
+SKEW or LEFTIST. It must rebuild a heap with the new structure using the
+ nodes in the current data structure.
+              <br>Note: rebuild means transferring nodes from the 
+current data structure to the new data structure. Rebuild operation does
+ not re-create the nodes.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void SQueue::dump()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function prints out the nodes information in an 
+in-order traversal. For every node, it prints the priority followed by 
+the post's ID; and in the case of a leftist heap the output is followed 
+by the value of NPL for the node. 
+              The <a href="https://swe.umbc.edu/~donyaee/res/tree_viewer.html">tree viewer tool</a>
+ shows a graphical representation of the output of the dump function. 
+You can copy and paste the dump() output in the viewer. This tool 
+facilitates debugging.
+              <b>Note:</b> The implementation for this function is provided to you.
+            </div>
+          </div>
+        <p></p>
+      </div>
+      
+      <h2 class="my-accordion">Additional Requirements</h2>
+      <div>
+        <ul>
+          <li>Private helper functions must be declared in the header file. No other modifications to the header file are permitted!</li>
+          <li>No STL containers or additional libraries may be used in 
+the implementation of the project classes. However, you can use STL 
+containers in the Tester class for the testing purposes.</li>
+          <li>The required functionality is provided in the Post class. 
+There is no need for any modifications to the implementation of this 
+class.</li>
+          <li>The test program must use the provided Random class to generate test data.</li>
+          <li>Your code should not have any memory leaks or memory errors.</li>
+          <li>In the case of a leftist heap the lowest level of nodes which store the keys have zero NPL value.</li>
+          <li>Computed priority values may not be pre-computed and 
+stored with the Post object in the queue. They must be computed as 
+needed using the priority function.</li>
+          <li>Insertion to and extraction from the heap must run in amortized logarithmic time.</li>
+          <li>Follow all coding standards as described on the C++ Coding
+ Standards. In particular, indentations and meaningful comments are 
+important.</li>
+        </ul>
+      </div>
+
+      <h2 class="my-accordion">Testing</h2>
+      <div>
+        <ul>
+          <li>The test file name must be <tt>mytest.cpp</tt>; the file name must be in lower case, a file name like <tt>myTest.cpp</tt> is not acceptable. </li>
+          <li>The test file must contain the declaration and implementation of your <tt>Tester</tt> class and the <tt>main()</tt> function as well as all your test cases, i.e. calls to your test functions.</li>
+          <li>You are responsible for thoroughly testing your work 
+before submission. The following section presents a non-exhaustive list 
+of tests to perform on your implementation.</li>
+          <li>You must write a separate function for every test case.</li>
+          <li>Every test function must return true/false depending on 
+passing or failing the test. Visual outputs are not accepted as test 
+results.</li>
+          <li>Tests cannot be interactive. The test file <tt>mytest.cpp</tt> must compile and run to completion. </li>
+          <li>An example of declaring, implementing, and calling a test function, and outputting the test results was provided in the <tt>driver.cpp</tt> file of project 0.</li>
+          <li>The <a href="https://swe.umbc.edu/~donyaee/res/testing.html">testing guidelines</a> page provides information that helps you to write more effective test cases.</li>
+        </ul>
+        <p><b>Note:</b> Testing incrementally makes finding bugs easier.
+ Once you finish a function and it is testable, make sure it is working 
+correctly.</p>
+        <h4>Testing SQueue class</h4>
+        <p><b>Note:</b> The majority of tests need to check whether the heap property is satisfied after the operations.
+        You might want to implement a helper function in your Tester class that performs such a functionality. 
+        Then, this helper can be called in multiple test functions.
+        </p>
+        <p>
+          </p><ul>
+            <li>Test insertion for a normal case of min-heap. After a 
+decent number of insertion (e.g. 300 nodes) we traverse the tree and 
+check that the heap property is satisfied at every node.</li>
+            <li>Test insertion for a normal case of max-heap. After a 
+decent number of insertion (e.g. 300 nodes) we traverse the tree and 
+check that the heap property is satisfied at every node.</li>
+            <li>Test removal for a normal case of min-heap. After a 
+decent number of insertion (e.g. 300 nodes) we check whether all 
+removals happen in the correct order.</li>
+            <li>Test removal for a normal case of max-heap. After a 
+decent number of insertion (e.g. 300 nodes) we check whether all 
+removals happen in the correct order.</li>
+            <li>Test all nodes in a leftist heap have the correct NPL value.</li>
+            <li>Test a leftist heap preserves the property of such a 
+heap, i.e. at every node the NPL value of the left child is greater than
+ or equal to the NPL value of the right child.</li>
+            <li>Test whether after changing the priority function a 
+correct heap is rebuilt with the same data (nodes) and the different 
+priority function.</li>
+            <li>Test merge of an empty queue (an edge case) with a 
+normal queue. This is a call to the function 
+SQueue::mergeWithQueue(SQueue&amp; rhs) where rhs is a normally 
+populated queue.</li>
+            <li>Test the SQueue class copy constructor for a normal case.</li>
+            <li>Test the SQueue class copy constructor for an edge case.</li>
+            <li>Test the SQueue class assignment operator for a normal case.</li>
+            <li>Test the SQueue class assignment operator for an edge case.</li>
+            <li>Test that attempting to dequeue an empty queue throws an out_of_range exception.</li>
+            <li>Test that attempting to merge queues with different priority functions throws a domain_error exception.</li>
+          </ul>
+        <p></p>
+        <h4>Random Numbers for Testing</h4>
+        <p>For testing purposes, we need data. Data can be written as 
+fixed values or can be generated randomly. Writing fixed data values 
+might be a tedious work since we need a large amount of data points. You
+ must use the provided Random class to generate test data.</p>
+        <p>In the file <tt>driver.cpp</tt> there is the class Random 
+which generates pseudorandom numbers. The class is using a default seed 
+value. On the same machine it always generates the same sequence of 
+numbers. That is why the numbers are called pseudorandom numbers, they 
+are not real random numbers. Please note, the numbers are machine 
+dependent, therefore, the numbers you see in the sample file <tt>driver.txt</tt> might be different from the numbers your machine generates.</p>
+        <h4>Memory leaks and errors</h4>
+        <p>
+          </p><ul>
+            <li>Run your test program in valgrind; check that there are no memory leaks or errors. 
+              <br><b>Note:</b> If valgrind finds memory errors, compile 
+your code with the -g option to enable debugging support and then re-run
+ valgrind with the -s and --track-origins=yes options. valgrind will 
+show you the lines numbers where the errors are detected and can usually
+ tell you which line is causing the error.</li>
+              <li>Never ignore warnings. They are a major source of errors in a program.</li>
+          </ul>
+        <p></p>
+      </div>
+      
+      <h2 class="my-accordion">What to Submit</h2>
+      <div>
+        <p>You must submit the following files to the proj3 directory.
+          </p><ul>
+            <li>squeue.h</li>
+            <li>squeue.cpp</li>
+            <li>mytest.cpp (This file contains your Tester class, all 
+test functions, all test cases, priority functions, and the main 
+function.)</li>
+          </ul>
+        <p></p>
+        <p>
+          If you followed the instructions in the
+          <a href="https://swe.umbc.edu/~donyaee/res/submission.html">Project Submission</a> page to set up
+          your directories, you can submit your code using the following
+          command:
+        </p>
+        
+        <pre class="code">   cp squeue.h squeue.cpp mytest.cpp ~/cs341proj/proj3/</pre>
+    
+      </div>  
+      
+      <h2 class="my-accordion">Grading Rubric</h2>
+      <div>
+        <p>
+          For details of grading rubric please refer to <a href="https://swe.umbc.edu/~donyaee/res/grading.html">Project Grading Policy</a>
+        </p>
+      </div>
+    </div>  
+  <hr>
+</div>
+</main>
+<footer class="container">
+  <div class="float-left">
+    <p>CMSC 341</p>
+  </div>
+  <div class="float-right">
+    <p>
+      <a href="http://www.csee.umbc.edu/">CSEE</a> |
+      <a href="http://www.umbc.edu/">UMBC</a>
+    </p>
+  </div>
+</footer>
+
+
+</body></html>

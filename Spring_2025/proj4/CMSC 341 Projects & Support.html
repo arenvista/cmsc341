@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>CMSC 341 Projects &amp; Support</title>
+    <link rel="stylesheet" href="CMSC%20341%20Projects%20&amp;%20Support_files/bootstrap.min.css">
+    <link rel="stylesheet" href="CMSC%20341%20Projects%20&amp;%20Support_files/jquery-ui.css">
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/jquery.min.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/jquery-ui.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/popper.min.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/bootstrap.min.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/jumbotron/">
+    <link href="CMSC%20341%20Projects%20&amp;%20Support_files/styles.css" rel="stylesheet">
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/functions.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="https://www.umbc.edu/"><img src="CMSC%20341%20Projects%20&amp;%20Support_files/UMBCretrievers_LOGO.jpg" width="40" hight="40" alt="UMBC Website"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/projects/index.html">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/staff.html">TA Support</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/res/resources.html">Resources</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/res/faq.html">FAQ</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<main role="main">
+  <div class="" style="background-color: gainsboro;">
+    <div class="container" style="padding-top: 1.5em;padding-bottom: 0.5em;">
+      <!-- ccredit for the proj-logo 
+      <p>
+          <figcaption class="center">
+          Figure from: <a href="https://www.britannica.com/science/DNA" > DNA - Encyclopædia Britannica, Inc.</a>
+          </figcaption>
+        </p> 
+      -->
+      <h2 class=""><img class="proj-logo" src="CMSC%20341%20Projects%20&amp;%20Support_files/DNA-strands-concept-illustration.png">&nbsp;CMSC 341 - Project 4: A DNA Database - Spring 2025</h2>
+    </div>
+  </div> 
+
+  <div class="container">
+    <p style="height: 0.5em;"></p>
+    <div id="content">
+      <h2>Due: Tuesday May 6, before 9:00 pm</h2>
+      <div></div>
+
+      <h2 class="my-accordion">Objectives</h2>
+      <div><p>
+        </p><ul>
+            <li>To implement a hash table.</li>
+            <li>To implement linear, quadratic and double-hash probing to manage hash collisions.</li>
+            <li>To implement an incremental re-hashing algorithm.</li>
+            <li>To practice use of function pointers.</li>
+            <li>To practice writing unit tests.</li>
+            <li>To practice working in a Linux environment.</li>
+            <li>To practice analyzing and understanding a project requirements.</li>
+        </ul>
+      <p></p></div>
+      
+      <h2 class="my-accordion">Introduction</h2> 
+      <div>
+        <p>
+          A research team collects and analyzes DNA samples from live 
+organisms in a wide forest of amazon. You are assigned the task of 
+developing a database application which is adapted to the project’s 
+specific requirements. The main operations in this application are 
+insert, find, and remove. Since the efficiency of operations is 
+extremely important, we have decided to use a hash table to manage 
+accessing the samples information. 
+        </p>
+        <p>
+          The DNA molecules have four chemical building blocks which can
+ appear in different orders or different sequences. The sequence of 
+these building blocks tells scientists the kind of genetic information 
+that is carried in a particular DNA segment. For example, the sequence 
+can highlight changes in a gene that may cause a disease. The building 
+blocks are called Adenine (A), Cytosine (C), Guanine (G), and Thymine 
+(T). The notation to present the sequences uses the characters A, C, G, 
+and T. The sequence AACAGGGTCA presents a sample sequence.
+        </p>
+        <p><img class="center" src="CMSC%20341%20Projects%20&amp;%20Support_files/dna.jpg"></p>
+        <p>
+          </p><figcaption class="center">
+          Figure from: <a href="https://irp.nih.gov/blog/post/2019/03/cutting-edge-technique-simultaneously-edits-multiple-genetic-targets"> The Intramural Research Program (IRP) - The internal research program of the National Institutes of Health (NIH)</a>
+          </figcaption>
+        <p></p>
+        <p>
+          In this application the keys are sequences, we know that this 
+can cause collisions and clustering in a hash table. To manage the 
+collision cases, we use multiple forms of probing for the collision 
+handling policy. The number of samples in the database can change during
+ different stages of the project. When a change is required, we need to 
+rehash the entire table. However, the rehash operation happens 
+incrementally during multiple regular operations.
+        </p>
+      </div>
+
+      <h2 class="my-accordion">Hash Tables</h2>
+      <div>
+        <p>A hash table is a data structure which implements the map 
+ADT. It stores the pairs of key-value. The key determines the index 
+number of an array cell (bucket) in which the value will be stored. A 
+hash function calculates the index number. If there is more than one 
+value for a key in the data set, the hash table uses a collision 
+handling scheme to find another cell for storing the new value.</p>
+        <h4>Linear Probing</h4>
+        <p>When we try to find an index in the hash table for a key and 
+we find out that the determined bucket is taken, we need to find another
+ bucket to store the key.
+          In a linear probing we store the information in the next 
+available bucket. In this scheme the jump step to find the next 
+available bucket is one.</p>
+        <h4>Quadratic Probing</h4>
+            <p> Linear probing can cause clustering, i.e. having many data points in a row. Clustering reduces the search efficiency.
+            Using quadratic probing the jump step to find the next available bucket is the square of iteration number.
+            </p>
+        <h4>Double-Hash Probing</h4>
+            <p>In this project we use the following equation to find the
+ next bucket for the purpose of the double hashing collision handling, 
+in which i = 0,1,2,3 ....
+            <br><br>  <b><i>index = ((Hash(key) % TableSize) + i x (11-(Hash(key) % 11))) % TableSize</i></b>
+            </p>
+      </div>
+      
+      <h2 class="my-accordion">Assignment</h2>
+      <div>
+        <p>Your assignment is to complete the class DnaDb and write the appropriate test functions.</p>
+        <p>The application starts with a hash table of size MINPRIME. 
+After certain criteria appearing it will switch to another table and it 
+transfers all data nodes from the current table to the new one 
+incrementally. Once the switching process starts it scans 25% of the 
+table and transfers any live nodes it finds in the old table and at 
+every consecutive operation (insert/remove) It continues to scan 25% 
+more of the table and transfers live data from the old table to the new 
+table until all data is transferred. We do not transfer deleted buckets 
+to the new table.</p>
+        <p>After an insertion, if the load factor becomes greater than 
+0.5, we need to rehash to a new hash table. The capacity of the new 
+table would be the smallest prime number greater than 4 times the 
+current number of data points. The current number of data points is 
+total number of occupied buckets minus total number of deleted buckets.</p>
+        <p>After a deletion, if the number of deleted buckets is more 
+than 80 percent of the total number of occupied buckets, we need to 
+rehash to a new table. The capacity of the new table would be the 
+smallest prime number greater than 4 times the current number of data 
+points. The current number of data points is total number of occupied 
+buckets minus total number of deleted buckets.</p>
+        <p>During a rehashing process the deleted buckets will be 
+removed from the system permanently. They will not be transferred to the
+ new table.</p>
+        <p>If a change of collision handling policy is requested by the 
+user while the program is running, the new policy will be applied to the
+ new table when a new rehash is triggered.</p>
+        <p>For this project, you are provided with the following files:
+        </p><ul>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj4files/dnadb.h">dnadb.h</a> – header file for the DNA and DnaDb classes.</li>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj4files/dnadb.cpp">dnadb.cpp</a> – the template file for the DnaDb class. Complete your DnaDb implementation in this file.</li>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj4files/driver.cpp">driver.cpp</a> – A sample driver program.</li>
+            <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj4files/driver.txt">driver.txt</a> – A sample output produced by driver.cpp.</li>
+        </ul>
+        <p></p>
+      </div>
+      
+      <h2 class="my-accordion">Specifications</h2>
+      <div>
+        <h4>DnaDb Class</h4>
+        <p>The DnaDb class uses the DNA class. It has a member variable 
+to store a pointer to a hash function. It also has two member variables 
+to store pointers to two arrays of DNA objects. These arrays are 
+m_currentTable and m_oldTable, and the m_sequence member variable of the
+ DNA object is used as the key for hashing purposes. 
+          A DNA object has another member variable which stores an ID 
+for the location in which the sample has been found. The location ID and
+ the sample sequence define the uniqueness  of a DNA object together.</p>
+        <p>
+          </p><div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">DnaDb::DnaDb(int size, hash_fn hash, prob_t probing = DEFPOLCY)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The constructor takes size to specify the length of the 
+current hash table, and hash is a function pointer to a hash function. 
+The type of hash is defined in <tt>DnaDb.h</tt>.
+              <br>The table size must be a prime number between MINPRIME
+ and MAXPRIME. If the user passes a size less than MINPRIME, the 
+capacity must be set to MINPRIME. If the user passes a size larger than 
+MAXPRIME, the capacity must be set to MAXPRIME. If the user passes a 
+non-prime number the capacity must be set to the smallest prime number 
+greater than user's value.
+              The probing parameter specifies the type of collision 
+handling policy for the current hash table.
+              <br>Moreover, the constructor creates memory for the current table and initializes all member variables. 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">DnaDb::~DnaDb()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              Destructor deallocates the memory.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool DnaDb::insert(DNA dna)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function inserts an object into the current hash 
+table. The insertion index is determined by applying the hash function 
+m_hash that is set in the DnaDb constructor and then reducing the output
+ of the hash function modulo the table size. A sample hash function is 
+provided in the <tt>driver.cpp</tt> file.
+              <br>Hash collisions should be resolved using the probing 
+policy specified in the m_currProbing variable. We insert into the table
+ indicated by m_currentTable. After every insertion we need to check for
+ the proper criteria, and if it is required, we need to rehash the 
+entire table incrementally into a new table. The incremental rehashing 
+proceeds with scanning 25% of the table at a time and transfer any live 
+data found to the new table. Once we transferred the live nodes in the 
+first 25% of the table, the second 25% live data will be transferred at 
+the next operation (insertion or removal). Once all data is transferred 
+to the new table, the old table will be removed, and its memory will be 
+deallocated.
+              <br>If the DNA object is inserted, the function returns 
+true, otherwise it returns false. A DNA object can only be inserted 
+once. The hash table does not contain duplicate objects. Moreover, the 
+location ID value should be a valid one falling in the range 
+[MINLOCID-MAXLOCID].
+              Every DNA object is a unique object carrying the DNA's 
+sequence and the location ID. The DNA's sequence is the key which is 
+used for hashing.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool DnaDb::remove(DNA dna)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function removes a data point from either the current
+ hash table or the old hash table where the object is stored. In a hash 
+table we do not empty the bucket, we only tag it as deleted. To tag a 
+removed bucket we can use the member variable m_used in the DNA class. 
+To find the bucket of the object we should use the proper probing policy
+ for the table.
+              <br>After every deletion we need to check for the proper 
+criteria, and if it is required, we need to rehash the entire table 
+incrementally into the current table. The incremental rehashing proceeds
+ with scanning 25% of the table at a time and transfer any live data 
+found to the new table. Once we transferred the live nodes in the first 
+25% of the table, the second 25% live data will be transferred at the 
+next operation (insertion or removal). Once all data is transferred to 
+the new table, the old table will be removed, and its memory will be 
+deallocated. 
+              <br>If the DNA object is found and is deleted, the function returns true, otherwise it returns false.
+             </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">DNA DnaDb::getDNA(string sequence, int location) const</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function looks for the DNA object with the sequence 
+and the location ID in the database, if the object is found the function
+ returns it, otherwise the function returns empty object.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool updateLocId(DNA dna, int location)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function looks for the DNA object in the database, if
+ the object is found the function updates its location ID and returns 
+true, otherwise the function returns false.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">float DnaDb::lambda() const</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function returns the load factor of the current hash 
+table. The load factor is the ratio of occupied buckets to the table 
+capacity.
+              An occupied bucket is a bucket which can contain either a 
+live data node (available to be used) or a deleted node.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">float DnaDb::deletedRatio() const</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function returns the ratio of the deleted buckets to the total number of occupied buckets .
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void changeProbPolicy(prob_t policy)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The user can change the collision handling policy of the 
+hash table at the runtime. If a change request has been submitted by a 
+user, the new policy will be stored in the variable m_newPolicy. 
+              Once the next rehash operation is initiated the new policy
+ will be used for the newly created hash table.  
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void DnaDb::dump()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function dumps the contents of the current hash table
+ and the old hash table if it exists. It prints the contents of the hash
+ table in array-index order. <b>Note: </b> The implementation of this function is provided. The function is provided to facilitate debugging.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">int DnaDb::findNextPrime(int current)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function returns the smallest prime number greater 
+than the argument "current". If "current" is less than or equal to 
+MINPRIME, the function returns 
+              MINPRIME. If "current" is greater than or equal to 
+MAXPRIME, the function returns MAXPRIME. In a hash table we'd like to 
+use a table with prime size. Then, every time we need to determine the 
+size for a new table, we use this function. <b>Note: </b> The implementation of this function is provided.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">bool DnaDb::isPrime(int number)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function returns true if the passed argument "number" is a prime number, otherwise it returns false. <b>Note: </b> The implementation of this function is provided.
+            </div>
+          </div>
+        <p></p>
+      </div>
+      
+      <h2 class="my-accordion">Additional Requirements</h2>
+      <div><p>
+        </p><ul>
+            <li>
+              Private helper functions may be added to the DnaDb class; 
+however, they must be declared in the private section of the class 
+declaration.
+            </li>
+            <li>
+              Every table may have its own collision handling policy. If
+ previously a change of policy has been requested and then a rehash 
+initiates the new table will use the new policy and the old table will 
+use its own policy while it exists.
+            </li>
+            <li>
+              The allocated memory to the hash table must be dynamically managed at execution time when there is rehashing.
+            </li>
+            <li>
+              Once the current hash table exceeds some criteria the 
+DnaDb class rehashes the data into a new hash table. This requires 
+creating a new table and swapping the two tables, so the newly created 
+table becomes the current table.
+            </li>
+            <li>
+              The capacity of the new table is determined by the 
+information from the current table (which will become the old table). It
+ would be the smallest prime number greater than ((m_currentSize - 
+m_numDeleted)*4).
+            </li>
+            <li>
+              For rehashing we scan 25% of the table at every operation 
+and transfer any live data to the new table. The class DnaDb has a 
+member variable named m_transferIndex which can be used to keep track of
+ the current status of transfer.
+            </li>
+            <li>
+              The 25% of data is an integer number, we use the floor value of the result.
+            </li>
+            <li>
+              When rehashing, the deleted buckets will be removed from the system.
+            </li>
+            <li>
+              The insertion of data points always happens in the current table.
+            </li>
+            <li>
+              The find operation can happen in the current table and the old table if it exists.
+            </li>
+            <li>
+              The remove operation can happen in the current table and the old table if it exists.
+            </li>
+            <li>
+              Once the incremental rehashing ends and there are no more 
+live data objects in the old table, the old table must be removed and 
+its memory must be deallocated.
+            </li>
+            <li>
+              Here are the rules for lazy deletion,
+              <ul>
+                <li>Treat deleted element as empty when inserting.</li>
+                <li>Treat deleted element as occupied when searching.</li>
+              </ul>
+            </li>
+            <li>
+              Here are the rules for rehashing criteria,
+              <ul>
+                <li>rehash once the load factor exceeds 50%.</li>
+                <li>rehash once the deleted ratio exceeds 80%.</li>
+              </ul>
+            </li>
+            <li>
+              The load factor is the number of occupied buckets divided 
+by the table size. The number of occupied buckets is the total of 
+available data and deleted data.
+            </li>
+            <li>
+              The deleted ratio is the number of deleted buckets divided by the number of occupied buckets.
+            </li>
+            <li>
+              No STL containers or additional libraries may be used in the DnaDb class. STL containers can be used in <tt>mytest.cpp</tt> for testing purposes.
+            </li>
+          </ul>
+      <p></p></div>
+
+      <h2 class="my-accordion">Testing</h2>
+      <div>
+        <p>
+        </p><ul>
+            <li>The test file name must be <tt>mytest.cpp</tt>; the file name must be in lower case, a file name like <tt>myTest.cpp</tt> is not acceptable. </li>
+            <li>The test file must contain the declaration and implementation of your <tt>Tester</tt> class and the <tt>main()</tt> function as well as all your test cases, i.e. calls to your test functions.</li>
+            <li>You are responsible for adequately testing your work 
+before submission. The following section presents a non-exhaustive list 
+of tests to perform on your implementation.</li>
+            <li>You must write a separate function for every test case.</li>
+            <li>Every test function must return true/false depending on 
+passing or failing the test. Visual outputs are not accepted as test 
+results.</li>
+            <li>The dump() function should not be called in the test functions. The dump() function is only provided to facilitate debugging.</li>
+            <li>Tests cannot be interactive. The test file <tt>mytest.cpp</tt> must compile and run to completion. </li>
+            <li>An example of declaring, implementing, and calling a test function, and outputting the test results was provided in the <tt>driver.cpp</tt> file of project 0.</li>
+            <li>The <a href="https://swe.umbc.edu/~donyaee/res/testing.html">testing guidelines</a> page provides information that helps you to write more effective test cases.</li>
+        </ul>
+        <p></p>
+        <p><b>Note:</b> Testing incrementally makes finding bugs easier.
+ Once you finish a function and it is testable, make sure it is working 
+correctly.</p>
+    <h4>Testing DnaDb Class</h4>
+    <p>
+      </p><ul>
+        <li>Test the insertion operation in the hash table. The 
+following presents a sample algorithm to test the normal insertion 
+operation:
+          <ul>
+            <li>There are some non-colliding data points in the hash table.</li>
+            <li>Insert multiple non-colliding keys.</li>
+            <li>Check whether they are inserted in the correct bucket (correct index).</li>
+            <li>Check whether the data size changes correctly.</li>
+          </ul>
+        </li>
+        <li>Test the find operation (getDNA(...) function) for an error case, the DNA object does not exist in the database.</li>
+        <li>Test the find operation (getDNA(...) function) with several non-colliding keys. </li>
+        <li>Test the find operation (getDNA(...) function) with several 
+colliding keys without triggering a rehash. This also tests whether the 
+insertion works correctly with colliding data.</li>
+        <li>Test the remove operation with a few non-colliding keys.</li>
+        <li>Test the remove operation with a number of colliding keys without triggering a rehash.</li>
+        <li>Test the rehashing is triggered after a descent number of data insertion.</li>
+        <li>Test the rehash completion after triggering rehash due to 
+load factor, i.e. all live data is transferred to the new table and the 
+old table is removed.</li>
+        <li>Test the rehashing is triggered after a descent number of data removal.</li>
+        <li>Test the rehash completion after triggering rehash due to 
+delete ratio, i.e. all live data is transferred to the new table and the
+ old table is removed.</li>
+      </ul>
+    <p></p>
+    <h4>Random Numbers for Testing</h4>
+    <p>For testing purposes, we need data. Data can be written as fixed 
+values or can be generated randomly. Writing fixed data values might be a
+ tedious work since we need a large amount of data points. You must use 
+the provided Random class to generate test data.</p>
+      <p>In the file <tt>driver.cpp</tt> there is the class Random which
+ generates pseudorandom numbers. The class is using a default seed 
+value. It also is possible to change the seed value. On the same machine
+ it always generates the same sequence of numbers. That is why the 
+numbers are called pseudorandom numbers, they are not real random 
+numbers. Please note, the numbers are machine dependent, therefore, the 
+numbers you see in the sample file <tt>driver.txt</tt> might be different from the numbers your machine generates.</p>
+    <h4>Testing For Memory Leaks / Memory Errors</h4>
+        <p>
+          </p><ul>
+            <li>Run your test program in valgrind; check that there are no memory leaks or errors. 
+              <br><b>Note:</b> If valgrind finds memory errors, compile 
+your code with the -g option to enable debugging support and then re-run
+ valgrind with the -s and --track-origins=yes options. valgrind will 
+show you the line numbers where the errors are detected and can usually 
+tell you which line is causing the error.</li>
+              <li>Never ignore warnings. They are a major source of errors in a program.</li>
+          </ul>
+        <p></p>
+    </div>
+      
+      <h2 class="my-accordion">What to Submit</h2>
+      <div>
+            <p>
+              You must submit the following files to the <tt>proj4</tt> submit
+              directory:
+            </p>
+            <ul>
+              <li> <tt>dnadb.h</tt> </li>
+              <li> <tt>dnadb.cpp</tt> </li>
+              <li> <tt>mytest.cpp</tt> (<b>Note: </b> This file contains the declaration and implementation of your Tester class as well as all your test cases.)</li>
+            </ul>
+            <p>
+              If you followed the instructions in the
+              <a href="https://swe.umbc.edu/~donyaee/res/submission.html">Project Submission</a> page to set up
+              your directories, you can submit your code using the following
+              command:
+            </p>
+            <pre class="code">   cp dnadb.h dnadb.cpp mytest.cpp ~/cs341proj/proj4/</pre>
+      </div>  
+      
+      <h2 class="my-accordion">Grading Rubric</h2>
+      <div>
+        <p>
+          For details of grading rubric please refer to <a href="https://swe.umbc.edu/~donyaee/res/grading.html">Project Grading Policy</a>
+        </p>
+      </div>
+    </div>  
+  <hr>
+</div>
+</main>
+<footer class="container">
+  <div class="float-left">
+    <p>CMSC 341</p>
+  </div>
+  <div class="float-right">
+    <p>
+      <a href="http://www.csee.umbc.edu/">CSEE</a> |
+      <a href="http://www.umbc.edu/">UMBC</a>
+    </p>
+  </div>
+</footer>
+
+</body></html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>CMSC 341 Projects &amp; Support</title>
+    <link rel="stylesheet" href="CMSC%20341%20Projects%20&amp;%20Support_files/bootstrap.min.css">
+    <link rel="stylesheet" href="CMSC%20341%20Projects%20&amp;%20Support_files/jquery-ui.css">
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/jquery.min.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/jquery-ui.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/popper.min.js"></script>
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/bootstrap.min.js"></script>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/jumbotron/">
+    <link href="CMSC%20341%20Projects%20&amp;%20Support_files/styles.css" rel="stylesheet">
+    <script src="CMSC%20341%20Projects%20&amp;%20Support_files/functions.js"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="https://www.umbc.edu/"><img src="CMSC%20341%20Projects%20&amp;%20Support_files/UMBCretrievers_LOGO.jpg" width="40" hight="40" alt="UMBC Website"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/projects/index.html">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/current/staff.html">TA Support</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/res/resources.html">Resources</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://swe.umbc.edu/~donyaee/res/faq.html">FAQ</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<main role="main">
+  <div class="" style="background-color: gainsboro;">
+    <div class="container" style="padding-top: 1.5em;padding-bottom: 0.5em;">
+      <h2 class=""><img class="proj-logo" src="CMSC%20341%20Projects%20&amp;%20Support_files/Yoda-Retina_square.JPG">&nbsp;CMSC 341 - Project 2: Spaceship Fleet - Spring 2025</h2>
+    </div>
+  </div> 
+
+  <div class="container">
+    <p style="height: 0.5em;"></p>
+    <div id="content">
+      <h2>Due: Tuesday Mar 25, before 9:00 pm</h2>
+      <div></div>
+
+      <h2 class="my-accordion">Objectives</h2>
+      <div>
+        <ul>
+          <li>Implementing a balanced binary search tree (BST) data structure.</li>
+          <li>Practice writing rebalancing routines for an AVL tree.</li>
+          <li>Practice writing re-structuring routines for a Splay tree.</li>
+          <li>Practice use of recursion in programs.</li>
+          <li>Practice writing unit tests.</li>
+          <li>Practice working in a Linux environment.</li>
+          <li>Practice analyzing and understanding a project requirements.</li>
+        </ul>
+      </div>
+      
+      <h2 class="my-accordion">Introduction</h2> 
+      <div>
+        <p>
+          In recent years the colonization of Mars has been a serious 
+topic discussed by researchers and many companies started to invest on 
+this idea. A research team proposed sending a fleet of spaceships 
+following each other to carry all necessities on a specific schedule and
+ in a safe manner. The idea is that many ships leave Earth at the same 
+time since it takes 6 months to reach Mars. 
+        </p>
+        <p>
+          In this fleet every ship carries some specific types of 
+equipment. All ships communicate with each other and at any time all 
+ships are aware of the status of the entire fleet. This is required to 
+make rearrangements in the schedule in order to ensure the success of 
+the mission. To satisfy this requirement the research team plans to 
+store the information of all ships in a database which runs in the brain
+ computer of every ship.
+        </p>
+        <p><img class="center" src="CMSC%20341%20Projects%20&amp;%20Support_files/StarTrekEnterpriseSmall.jpg"></p>
+        <p>
+          </p><figcaption class="center">
+          Figure from: <a href="https://airandspace.si.edu/stories/editorial/examining-starship-enterprise"> National Air and Space Museum - Smithsonian</a>
+          </figcaption>
+        <p></p>
+        <p>
+          You are assigned the task of developing a data structure that 
+can store the database. In this application you use a balanced binary 
+search tree to store the information for all ships. Every node in this 
+BST represents a spaceship. The ships communicate with each other and 
+work as a team. The data structure is updated automatically. The 
+decision is made to use self-balancing Binary Search Tree. The data 
+structure module provides the possibility of organizing data in a 
+regular BST or an AVL tree or a Splay tree. It is also possible to 
+convert the data structure in the run time.
+        </p>
+      </div>
+
+      <h2 class="my-accordion">Binary Search Tree (BST)</h2>
+      <div>
+        <p>A binary tree is a tree structure in which each node has 
+either 0, 1, or 2 children. A BST is a derivative of a binary tree where
+ each node contains a key and value pair. The key determines the nodes' 
+placement in the tree, and the value is the data to be stored. Given a 
+set of rules about how to order the keys, we can create a structure 
+where we can query data from it with a specified key. For a BST, we 
+define these rules as follows:</p>
+        <ol>
+          <li>If the target key is less than the key at the current node, traverse to the left child.</li>
+          <li>If the target key is greater than the key at the current node, traverse to the right child.</li>
+          <li>If the keys are equal, the action is determined by our application of the tree. More on this later.</li>
+        </ol>
+        <p>A BST on its own can be efficient, but as the dataset 
+increases in size, we can start running into problems.  In the worst 
+case, our BST can become a linked list where each of the new keys is 
+greater than or less than the previous one inserted.  On the contrary, 
+the best case is inserting elements into the tree in a way to make it a 
+complete tree.  Either case is rare to occur with a large dataset, but 
+imbalances are common.  An imbalance can be defined when one subtree on a
+ node becomes significantly larger in size or height compared to the 
+other subtree.  As the tree becomes increasingly imbalanced, our average
+ query times begin to increase.  Luckily, we have methods to prevent 
+large imbalances.</p>
+        <h4>The AVL Tree</h4>
+        <p>An AVL tree employs rotations during insertions or deletions 
+to balance a BST. As the name implies, nodes are literally rotated up 
+the tree to keep its structure complete. A complete tree, or ideally a 
+perfect tree, is the most efficient kind of binary tree. Insertions, 
+deletions, and queries all take O(log(n)) time in such a case. AVL trees
+ have two types of rotations, left and right, which are shown in the 
+diagram below:</p>
+        <img src="CMSC%20341%20Projects%20&amp;%20Support_files/rotations.png">
+        <p>The variables "x" and "y" refer to 2 specific nodes whereas 
+the subtrees "a", "b", and "c" refer to subtrees (which is just a 
+pointer to a node which may or may not have more children). Note that 
+the pointers to "a", "b", and/or "c" can be null, but "x" nor "y" will 
+never be null.</p>
+        <p>The key to keeping an AVL tree efficient is when we perform 
+these rotations. A rotation is performed on a node that is imbalanced, 
+and an imbalance occurs when the node's children's heights differ by 
+more than 1. For example, in the above diagram, consider node "y" to be 
+imbalanced in the right rotation and node "x" to be imbalanced in the 
+left rotation. Using a left and right rotation, we can perform four 
+rotation combinations. The imbalance in the following examples occurs on
+ the node with the height of 2 (in red).</p>
+        <ol>
+          <li>
+            Single left rotation: This is a simple case where we can apply a left rotation to the top node to balance the tree. 
+          </li>
+          <img src="CMSC%20341%20Projects%20&amp;%20Support_files/single_left_rotation.png">
+          <li>
+            Single right rotation: Similar to the above case, we can 
+apply a single right rotation to the top node to balance the tree.
+          </li>
+          <img src="CMSC%20341%20Projects%20&amp;%20Support_files/single_right_rotation.png">
+          <li>
+            Double left-right rotation: The following two cases become 
+more complicated and require two rotations. In this example, the 
+imbalance still occurs at the node with height 2. If we perform a single
+ right rotation, we still end up with an unbalanced tree, just mirrored 
+(draw a diagram). So, we must perform two rotations. The first left 
+rotation should transform the tree into a form we can balance with a 
+second right rotation. Which node should the first rotation be performed
+ on (hint: it's not necessarily the node with height 2)?
+          </li>
+          <img src="CMSC%20341%20Projects%20&amp;%20Support_files/left_right_rotation.png">
+          <li>
+            Double right-left rotation: Likewise, this case uses a right rotation followed by a left rotation.
+          </li>
+          <img src="CMSC%20341%20Projects%20&amp;%20Support_files/right_left_rotation.png">
+        </ol>
+        <h4>The Splay Tree</h4>
+          <p>
+            Splay trees are binary search trees in which we store the recently accessed node 
+            at the root of tree. Such a tree would be a good choice for data structure, if in 
+            the application some data points are accessed more frequently than others. 
+            Although some work is required in this data structure to bring up the recently 
+            accessed data point to the root, but as soon as a node is at the root, the 
+            next time its access time is O(1). The amortized analysis of Splay trees reveals 
+            that the search operation is O(log n).
+          </p>
+      </div>
+      <h2 class="my-accordion">Assignment</h2>
+      <div>
+        <p>Your assignment is to implement a binary search tree with balancing methods.</p>
+        <p>For this project, you are provided with the skeleton .h and .cpp files and a sample driver:</p>
+            
+        <ul>
+          <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj2files/fleet.h">fleet.h</a> – Interface for the Ship and Fleet classes.</li>
+          <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj2files/fleet.cpp">fleet.cpp</a> – A skeleton for the implementation of the class Fleet.</li>
+          <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj2files/driver.cpp">driver.cpp</a> – A sample driver program.
+            (<b>Note:</b> this file is provided to show a typical usage.
+ Since the project is not implemented, trying to compile and run this 
+driver program will not generate the sample output in driver.txt. Once 
+you develop your project, you should be able to generate the similar 
+output as driver.txt by running this driver program. Please note, the 
+randomly generated values are different on different platforms.)
+          </li>
+          <li><a href="https://swe.umbc.edu/~donyaee/current/projects/proj2files/driver.txt">driver.txt</a> – A sample output produced by driver.cpp.</li>
+        </ul>
+        <p>Please note, you may not change any of the private variables 
+or public function declarations or file names. They will be used for 
+grading. Also, any provided function implementations may not be 
+modified. You may, however, add your own private functions as helpers. 
+The current private function declarations are provided as a backbone to 
+help you.</p>
+        <p>Additionally, you are responsible for thoroughly testing your program. Your test program, <tt>mytest.cpp</tt>,
+ must be submitted along with other files. For grading purposes, your 
+implementation will be tested on input data of varying sizes, including 
+very large data. Your submission will also be checked for memory leaks 
+and memory errors.</p>
+      </div>
+      
+      <h2 class="my-accordion">Specifications</h2>
+      <div>
+        <p>This project has three classes: Random, Ship, and Fleet. The 
+Random class is provided as a supplementary class to facilitate the 
+testing. The Ship class defines the nodes in the binary tree. The Fleet 
+class is the one that implements the balanced binary search tree. This 
+class allows for creating three different types of BST. The three types 
+are a regular BST with no balancing, an AVL tree, and a Splay tree.</p>
+    
+        <h4>Class Fleet</h4>
+        <p>The Fleet class implements a binary search tree. The 
+Fleet::m_root member variable points to a node of type Ship. Every node 
+in Fleet is a Ship object. The nodes are organized as a binary search 
+tree. The Fleet class supports the insertion and deletion operations. 
+After insertion or deletion operations the class checks for any required
+ property such as an imbalance and it performs the re-structuring 
+operations.</p>
+        <p>For the Fleet class, you must implement the following methods in <tt>fleet.cpp</tt>:</p>
+        <p>
+          </p><div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">Fleet::Fleet()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The default constructor performs the required 
+initializations. It creates an empty object. It also sets the type of 
+the tree to NONE. 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">Fleet::Fleet(TREETYPE type)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The constructor performs the required initializations. It 
+creates an empty object. It also specifies the type of the tree. The 
+tree can be a regular BST which does not perform any re-structuring. It 
+can be an AVL tree which re-balances the tree after every insertion or 
+removal. The third type is a Splay tree which splays the accessed node 
+to the tree root.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">Fleet::~Fleet()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The destructor performs the required cleanup including memory deallocations and re-initializing. 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void Fleet::insert(const Ship&amp; ship)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function inserts a Ship object into the tree in the 
+proper position. The Ship::m_id should be used as the key to traverse 
+the Fleet tree and abide by BST traversal rules. The comparison 
+operators (&gt;, &lt;, ==, !=) work with the int type in C++. A Ship id 
+is a unique number in the range MINID - MAXID. We do not allow a 
+duplicate id or an object with invalid id in the tree.
+              <br>Note:
+              <ul>
+                <li>In the Fleet tree data structure every node is a 
+Ship object which is represented as a pointer to the Ship object. 
+Therefore, for every insertion we need to allocate memory and use the 
+information of ship to initialize the new node. Memory allocation takes 
+place in the Fleet class.</li>
+                <li>If the tree type is BST, after an insertion, we should update the height for all nodes in the insertion path.</li>
+                <li>If the tree type is AVL, after an insertion, we 
+should update the height of each node in the insertion path as well as 
+check for an imbalance at each node in this path. </li>
+                <li>If the tree type is SPLAY, after and insertion, we 
+need to splay the inserted node and bring it to the root of the tree 
+while the tree preserves the BST property as well as updating the node 
+heights.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void Fleet::clear()</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The clear function deallocates all memory in the tree and makes it an empty tree.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void Fleet::remove(int id)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              The remove function traverses the tree to find a node with
+ the id and removes it from the tree. If the tree type is SPLAY, the 
+remove function does not remove the node. In the case of BST or AVL tree
+ the remove function should also update the heights for all nodes in the
+ removal path.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">void Fleet::setType(TREETYPE type)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function sets the type of an existing Fleet object. 
+Once the type is changed, the function should re-structure the tree 
+according to the following rules:
+              <ul>
+                <li>If the type is changed from BST or SPLAY to AVL, the
+ function should reconstruct the tree as an AVL tree. In the case of 
+reconstruction the nodes are transferred from the old tree to the new 
+tree. There should not be any reallocation of memory.</li>
+                <li>If the type is changed from AVL to BST or Splay, 
+there is no need for reconstruction. After change the tree operations 
+will perform according to the new type.</li>
+                <li>Any changes between BST and SPLAY types will not 
+trigger a reconstruction. After change the tree operations will perform 
+according to the new type.</li>
+                <li>Any changes to NONE will clear the tree and removes all the nodes.</li>
+              </ul> 
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">TREETYPE Fleet::getType() const</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function returns the current type of the tree.
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6" style="border: 1px solid grey;font-weight: bold;">const Fleet &amp; Fleet::operator=(const Fleet &amp; rhs)</div>
+            <div class="col-md-6" style="border: 1px solid grey; padding-left:2em;">
+              This function overloads the assignment operator for the class Fleet. It creates an exact deep copy of the rhs.
+            </div>
+          </div>
+        <p></p>
+      </div>
+      
+      <h2 class="my-accordion">Additional Requirements</h2>
+      <div>
+        <ul>
+          <li>The class declarations Fleet, Ship, Random and provided 
+function implementations in fleet.cpp may not be modified in any way. No
+ additional libraries may be used. However, private helper functions are
+ permitted in the Fleet class.</li>
+          <li>No STL containers or additional libraries may be used in 
+the implementation of the Fleet class. However, you can use STL 
+containers in the Tester class for the testing purposes.</li>
+          <li>The required functionality is provided in the Ship class. 
+There is no need for any modifications to the implementation of this 
+class.</li>
+          <li>Your code should not have any memory leaks or memory errors.</li>
+          <li>The lowest level of nodes which store the keys have zero height.</li>
+          <li>Follow all coding standards as described on the 
+            <a href="https://swe.umbc.edu/~donyaee/res/coding-standards.html">C++ Coding Standards</a>. In particular, indentations and meaningful comments are important.
+          </li>
+          <li>The function Fleet::dumpTree(...) prints out the nodes 
+information in an in-order traversal. For every node, it prints the id 
+followed by the height of the node in the Fleet tree. The following 
+example presents a sample output of the dumpTree() function for an AVL 
+tree.
+            The <a href="https://swe.umbc.edu/~donyaee/res/tree_viewer.html">tree viewer tool</a>
+ shows a graphical representation of the output of the dump function. 
+You can copy &amp; paste the dump output in the viewer. This tool 
+facilitates debugging.
+            <b>Note:</b> The implementation of the dump function is provided to you.  
+             <br><pre class="code">((((19224:0)19289:1(19372:0))20201:2((26241:0)27904:1))53002:3(60496:1(93209:0)))</pre>
+            <img class="center-large" src="CMSC%20341%20Projects%20&amp;%20Support_files/dump-example.png">
+          </li>
+        </ul>
+      </div>
+
+      <h2 class="my-accordion">Testing</h2>
+      <div>
+        <p>You need to test your project and you need to submit your 
+tests along with your project. Tests must be submitted in a file called <tt>mytest.cpp</tt>.</p>
+        <ul>
+          <li>The test file name must be <tt>mytest.cpp</tt>; the file name must be in lower case, a file name like <tt>myTest.cpp</tt> is not acceptable. </li>
+          <li>The test file must contain the declaration and implementation of your <tt>Tester</tt> class and the <tt>main()</tt> function as well as all your test cases, i.e. calls to your test functions.</li>
+          <li>You are responsible for thoroughly testing your work 
+before submission. The following section presents a non-exhaustive list 
+of tests to perform on your implementation.</li>
+          <li>You must write a separate function for every test case.</li>
+          <li>Every test function must return true/false depending on 
+passing or failing the test. Visual outputs are not accepted as test 
+results.</li>
+          <li>Tests cannot be interactive. The test file <tt>mytest.cpp</tt> must compile and run to completion. </li>
+          <li>An example of declaring, implementing, and calling a test function, and outputting the test results was provided in the <tt>driver.cpp</tt> file of project 0.</li>
+          <li>The <a href="https://swe.umbc.edu/~donyaee/res/testing.html">testing guidelines</a> page provides information that helps you to write more effective test cases.</li>
+        </ul>
+        <p><b>Note:</b> Testing incrementally makes finding bugs easier.
+ Once you finish a function and it is testable, make sure it is working 
+correctly.</p>
+
+        <h4>Testing Fleet Class</h4>
+        <ul>
+          <li>Test whether the AVL tree is balanced after a decent 
+number of insertions, e.g. 300 insertions. (Note: this requires visiting
+ all nodes and checking the height values are correct.)</li>
+          <li>Test whether the BST property is preserved after all 
+insertions. (Note: this requires visiting all nodes and comparing key 
+values.)</li>
+          <li>Test whether the Splay tree performs the splay operations.
+ For example, we can insert multiple nodes in the splay tree and after 
+every insertion we check whether the inserted node is at root and the 
+tree preserves the BST property.</li>
+          <li>Test whether the height values are correct after multiple insertions in a Splay tree.</li>
+          <li>Test the remove function for a normal case in the BST 
+tree. Trying to remove a node from a tree results in a tree without the 
+node.</li>
+          <li>Test the remove function for an edge case in the BST tree. In this case the tree has only one node and we remove the node.</li>
+          <li>Test whether the AVL tree is balanced after multiple 
+removals. For example, insert 300 nodes, then remove 150, and check the 
+AVL property.</li>
+          <li>Test whether the BST property is preserved after multiple removals from a BST tree and an AVL tree.</li>
+          <li>Test whether the height values are correct in a BST tree after multiple removals.</li>
+          <li>Test the assignment operator for a normal case.</li>
+          <li>test the assignment operator for an error case, e.g. assigning an empty object to an empty object.</li>
+        </ul>
+        <h4>Random Numbers for Testing</h4>
+          <p>For testing purposes, we need data. Data can be written as 
+fixed values or can be generated randomly. Writing fixed data values 
+might be a tedious work since we need a large amount of data points. The
+ approach for creating data will be your decision.</p>
+          <p>In the file <tt>driver.cpp</tt> there is the class Random 
+which generates pseudorandom numbers. The class is using a default seed 
+value. On the same machine it always generates the same sequence of 
+numbers. That is why the numbers are called pseudorandom numbers, they 
+are not real random numbers. Please note, the numbers are machine 
+dependent, therefore, the numbers you see in the sample file <tt>driver.txt</tt> might be different from the numbers your machine generates.</p>
+        <h4>Memory leaks and errors</h4>
+        <ul>
+          <li>Run your test program in valgrind; check that there are no memory leaks or errors. 
+            <br><b>Note:</b> If valgrind finds memory errors, compile 
+your code with the -g option to enable debugging support and then re-run
+ valgrind with the -s and --track-origins=yes options. valgrind will 
+show you the lines numbers where the errors are detected and can usually
+ tell you which line is causing the error.</li>
+            <li>Never ignore warnings. They are a major source of errors in a program.</li>
+        </ul>
+      </div>
+      
+      <h2 class="my-accordion">What to Submit</h2>
+      <div>
+        <p>You must submit the following files to the proj2 directory.</p>
+        <ul>
+          <li>fleet.h</li>
+          <li>fleet.cpp</li>
+          <li>mytest.cpp - (<b>Note:</b> This file contains the declaration and implementation of your Tester class as well as all your test cases and a main function.)
+          </li>
+        </ul>
+        <p>
+          If you followed the instructions in the
+          <a href="https://swe.umbc.edu/~donyaee/res/submission.html">Project Submission</a> page to set up
+          your directories, you can submit your code using the following
+          command:
+        </p>
+        
+        <pre class="code">   cp fleet.h fleet.cpp mytest.cpp ~/cs341proj/proj2/</pre>
+      </div>  
+      
+      <h2 class="my-accordion">Grading Rubric</h2>
+      <div>
+        <p>
+          For details of grading rubric please refer to <a href="https://swe.umbc.edu/~donyaee/res/grading.html">Project Grading Policy</a>
+        </p>
+      </div>
+    </div>  
+  <hr>
+</div>
+</main>
+<footer class="container">
+  <div class="float-left">
+    <p>CMSC 341</p>
+  </div>
+  <div class="float-right">
+    <p>
+      <a href="http://www.csee.umbc.edu/">CSEE</a> |
+      <a href="http://www.umbc.edu/">UMBC</a>
+    </p>
+  </div>
+</footer>
+
+
+</body></html>
