@@ -26,6 +26,7 @@ class Floor{
         m_previous=nullptr;
         }
     ~Floor(){}
+    void Echo();
     private:
     int m_floorNum;
     Floor* m_next;      // memory for this is managed in Elevator class
@@ -49,6 +50,8 @@ class Elevator{
     void dump();                        // for debugging purposes
     void clear();
     bool processNextRequest();
+    Floor* findFloor(int floor, Floor* curr);          //returns the floor that we are looking for
+    Floor* getCurrentFloor();          // gets current floor
 
     private:
     int m_id;           // the elevator ID (unique)
